@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int fibonacci_recursion(int n){
+if(n<=2)
+return 1;
+else
+return fibonacci_recursion(n-1) + fibonacci_recursion(n-2);
+}
+int fibonacci_using_loop(int n){
+if(n==0)
+return 0;
+if(n<=2)
+return 1;
+int i, last, nextToLast, result;
+last = 1;
+nextToLast = 1;
+result = 1;
+for(i=3; i<=n; i++){
+result = last + nextToLast;
+nextToLast = last;
+last = result;
+}
+
+return result;
+}
+int main()
+{
+ cout<<"The fibonacci using loop: "<<fibonacci_using_loop(11);
+ cout<<"\nThe fibonacci using reursion: "<<fibonacci_recursion(11);
+ return 0;
+}

@@ -1,0 +1,21 @@
+//SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 < 0.9.0;
+
+contract Bank {
+
+    mapping(address => uint256)  balanceOf;   // balances, indexed by addresses
+
+    function deposit(uint256 amount) public returns(uint){
+        balanceOf[msg.sender] += amount;
+        return balanceOf[msg.sender];     // adjust the account's balance
+    }
+
+    function withdraw(uint256 amount) public returns(uint) {
+        balanceOf[msg.sender] -= amount;
+        return balanceOf[msg.sender];
+    }
+
+    function getBalance() public view returns(uint){
+        return balanceOf[msg.sender];
+    }
+}

@@ -1,0 +1,32 @@
+//SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.7.0 < 0.9.0;
+
+contract System{
+
+struct studentStruct{
+    uint Id;
+    string fname;
+    string lname;
+    uint marks;
+}
+ address owner;
+
+ uint public stdcount=0;
+ studentStruct[] stdRecords;
+ constructor(){
+     owner=msg.sender;
+ }
+
+ function addNewRecords(uint _ID,string memory _fname,string memory _lname,uint _marks) public payable
+ {
+    stdcount=stdcount+1;
+    stdRecords.push(studentStruct(_ID , _fname , _lname , _marks));
+
+
+ }
+
+ function getAllRecords() public view returns(studentStruct[] memory){
+    return stdRecords;
+ }
+
+}
